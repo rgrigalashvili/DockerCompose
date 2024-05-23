@@ -1,0 +1,26 @@
+﻿version: '3.8'
+
+services:
+  database:
+    image: mysql:8.0.37
+    volumes:
+      - datafiles:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: "testpwd"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "testpwd"
+      MYSQL_DATABASE: "test"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on: 
+      - database
+    ports:
+      - "5000:8080"
+
+volumes:
+  datafiles:
