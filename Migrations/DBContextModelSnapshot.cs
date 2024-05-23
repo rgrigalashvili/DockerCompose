@@ -2,21 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebService.Entities;
+
+#nullable disable
 
 namespace WebService.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240522172110_dbInit")]
-    partial class dbInit
+    partial class DBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.4")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("WebService.Entities.User", b =>
@@ -26,35 +26,35 @@ namespace WebService.Migrations
                         .HasColumnType("int(11)");
 
                     b.Property<DateTime>("EnrollmentDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("varchar(45)")
                         .HasMaxLength(45)
-                        .IsUnicode(false);
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("varchar(45)")
                         .HasMaxLength(45)
-                        .IsUnicode(false);
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("varchar(45)")
                         .HasMaxLength(45)
-                        .IsUnicode(false);
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)");
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("varchar(45)")
                         .HasMaxLength(45)
-                        .IsUnicode(false);
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(45)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("user");
+                    b.ToTable("user", (string)null);
                 });
 #pragma warning restore 612, 618
         }

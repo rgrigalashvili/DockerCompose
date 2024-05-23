@@ -21,6 +21,8 @@ services:
       - database
     ports:
       - "5000:8080"
-
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=server=localhost;port=3306;user=root;password=testpwd;database=test
 volumes:
   datafiles:
